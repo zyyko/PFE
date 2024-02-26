@@ -5,17 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reservateur extends Model
+class Immobilier extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'id';
     protected $fillable = [
-        "NOM_UTILISATEUR",
-        "email",
-        "password",
+        "TYPE",
+        "ville",
+        "Description",
+        "image",
+        "Disponibilité",
+        "Prix",
+        'ID_UTILISATEUR'
     ];
-    public $table = 'reservateur';
+
     public $timestamps = false;
-    
 
 }

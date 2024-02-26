@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reservateur;
+use App\Models\ImmobiliersReserved;
+
 
 class ProfileController extends Controller
 {
@@ -14,6 +16,8 @@ class ProfileController extends Controller
         /* if($profile === NULL) {
             return abort(404);
         } */
-        return view('profile', compact('profile'));
+
+        $immobilierReserved = ImmobiliersReserved::where('ID_RESERVATEUR', $profile->id)->get();
+        return view('admin.profile', compact('profile','immobilierReserved'));
     }
 }

@@ -49,8 +49,29 @@
     </div>
     <div>
         <h4 class="mx-5 mt-3">Les reservations </h4>
-        <table>
-            
+        <table class="table table-striped">
+            <tr>
+                <th>ID_RESERVATION</th>
+                <th>ID_IMMOBILIER</th>
+                <th>ID_RESERVATEUR</th>
+                <th>Type</th>
+                <th>DATE_RESERVATION</th>
+                <th>DATE_DEBUT</th>
+                <th>DATE_FIN</th>
+            </tr>
+            <tr>
+                @foreach($immobilierReserved as $immobilier)
+                    <tr>
+                        <td>{{$immobilier->ID_RESERVATION}}</td>
+                        <td>{{$immobilier->ID_IMMOBILIER}}</td>
+                        <td>{{$immobilier->ID_RESERVATEUR}}</td>
+                        <td>{{$immobilier->TYPE}}</td>
+                        <td>{{$immobilier->DATE_RESERVATION}}</td>
+                        <td>{{$immobilier->DATE_DEBUT}}</td>
+                        <td>{{$immobilier->DATE_FIN}}</td>
+                    </tr>
+                @endforeach
+            </tr>
         </table>
     </div>
 @endsection

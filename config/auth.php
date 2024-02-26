@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'reservateur' => [
+            'driver' => 'session',
+            'provider' => 'reservateurs',
+        ],
+
     ],
 
     /*
@@ -60,16 +65,14 @@ return [
     */
 
     'providers' => [
-        /* 'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ], */
-
-         'users' => [
-             'driver' => 'database',
-             'table' => 'administrators',
-
-         ],
+        'users' => [
+            'driver' => 'database',
+            'table' => 'administrators',
+        ],
+        'reservateurs' => [ // Define a provider for the 'reservateur' type
+            'driver' => 'database',
+            'table' => 'reservateur',
+        ],
     ],
 
     /*
