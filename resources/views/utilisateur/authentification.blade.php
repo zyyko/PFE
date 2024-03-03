@@ -4,9 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="{{ asset('/ressources/login.css') }}">
+  <link rel="stylesheet" href="{{ asset('login-register/styles/login.css') }}">
+  <style>
+    nav > h1 {
+      background-color:black;
+      height: 70px;
+      color: WHITE;
+      padding
+    }
+
+  </style>
 </head>
 <body> 
+{{--   <nav>
+    <h1>Bookify</h1>
+  </nav> --}}
   <div class="container">
   {{ session('success') }} 
     <h2>login</h2>

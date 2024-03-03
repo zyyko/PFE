@@ -1,6 +1,6 @@
 <style>
     .signup-part {
-        background-image: url('ressources/home/Signup-cover.png');
+        background-image: url('home-resourcess/img/Signup-cover.png');
         background-repeat: no-repeat;
         height: 100vh;
         display: flex;
