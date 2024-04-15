@@ -8,13 +8,14 @@ use ProtoneMedia\Splade\SpladeTable;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
 use Illuminate\Support\Collection;
+use ProtoneMedia\Splade\Facades\Toast;
+
 
 
 class HomeController extends Controller
 {
    public function index () 
    {
-
       $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
          $query->where(function ($query) use ($value) {
              Collection::wrap($value)->each(function ($value) use ($query) {
@@ -39,8 +40,9 @@ class HomeController extends Controller
                   ->column("NOM_UTILISATEUR", sortable : true)
                   ->column("email", sortable : true)
                   ->column("date_inscription" , sortable : true)
-                  ->column('operation')
-                  ->selectFilter()
+                  ->column("compte_status", sortable : false)
+                  ->column('action')
+   
         ]);
    }
 

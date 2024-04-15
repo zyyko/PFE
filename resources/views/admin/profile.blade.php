@@ -1,77 +1,40 @@
-<style>
-    .container {
-        display: flex;
-        margin-left: 30px;
-        flex-wrap: wrap; /* Allow flex items to wrap to new line */
-    }
-    .text-container {
-        margin-top: 30px;
-        margin-left: 30px;
-        flex: 1; /* Take remaining space */
-    }
-    .group-button {
-        margin-top: 30px; /* Adjust as needed */
-    }
-    @media (max-width: 768px) {
-        .container {
-            flex-direction: column; /* Display items vertically on small screens */
-            align-items: center; /* Center items horizontally */
-        }
-        .text-container {
-            margin-top: 0; /* Remove top margin on small screens */
-            margin-left: 0; /* Remove left margin on small screens */
-            text-align: center; /* Center text on small screens */
-        }
-    }
-</style>
-
-@extends("partials.nav")
-
-@section('content')
-    <div class="container">
+<x-layout>
+    <x-slot name="header">
+        {{ __('Reservateurs') }}
+    </x-slot>
+    <x-panel class="flex justify-center items-center">
         <div>
-            <img src="download.png" alt="" style="border-radius: 50%;">
-        </div>
-        <div class="text-container">
-            <div>
-                <b>Nom Complet</b>: {{$profile->NOM_UTILISATEUR}} <br/>
-                <b>Date inscription</b>: {{$profile->DATE_INSCRIPTION}}<br/>
-                <b>Type utilisateur</b>: NULL
+
+            <div class="flex justify-center items-center">
+                <img src="download.png" class="" style="border-radius: 50%;s">
             </div>
-            <div class="group-button">
-                <form action="">
-                    <input type="submit" class="btn btn-danger" value="Supprimer"/>
-                    <input type="submit" class="btn btn-primary" value="Notifier"/>
-                    <input type="submit" class="btn btn-warning" value="Bannir"/>
-                </form>
+            <div class="text-container text-center">
+                <div>
+                    <b>Nom Complet</b>: {{$profile->NOM_UTILISATEUR}} <br/>
+                    <b>Date inscription</b>: {{$profile->DATE_INSCRIPTION}}<br/>
+                    <b>Compte status</b>: {{$profile->compte_status}}<br/>
+                </div>
+                <div class="group-button mt-3">
+                    <Link modal href="{{route('show.delete',[$profile->id, $profile->NOM_UTILISATEUR])}}"class="font-bold text-white bg-red-500 px-4 py-2 mr-4 rounded">Supprimer</Link>
+                        @if ($profile->compte_status == "BANNED")
+                            <Link modal href="{{route('show.débannir',[$profile->id, $profile->NOM_UTILISATEUR])}}"class="font-bold text-white bg-blue-500 px-4 py-2 mr-4 rounded">Débannir</Link>
+                        @else
+                            <Link slideover href="{{route('show.bannir',[$profile->id, $profile->NOM_UTILISATEUR])}}" class="font-bold text-white bg-orange-500 px-4 py-2 mr-4 rounded">Bannir</Link>
+                        @endif
+                        <Link modal href="{{ route('show.notify', $profile->email) }}" class="font-bold text-white bg-green-500 px-4 py-2 mr-4 rounded">Notifier</Link>
+                </div>  
             </div>
         </div>
-    </div>
-    <div>
-        <h4 class="mx-5 mt-3">Les reservations </h4>
-        <table class="table table-striped">
-            <tr>
-                <th>ID_RESERVATION</th>
-                <th>ID_IMMOBILIER</th>
-                <th>ID_RESERVATEUR</th>
-                <th>Type</th>
-                <th>DATE_RESERVATION</th>
-                <th>DATE_DEBUT</th>
-                <th>DATE_FIN</th>
-            </tr>
-            <tr>
-                @foreach($immobilierReserved as $immobilier)
-                    <tr>
-                        <td>{{$immobilier->ID_RESERVATION}}</td>
-                        <td>{{$immobilier->ID_IMMOBILIER}}</td>
-                        <td>{{$immobilier->ID_RESERVATEUR}}</td>
-                        <td>{{$immobilier->TYPE}}</td>
-                        <td>{{$immobilier->DATE_RESERVATION}}</td>
-                        <td>{{$immobilier->DATE_DEBUT}}</td>
-                        <td>{{$immobilier->DATE_FIN}}</td>
-                    </tr>
-                @endforeach
-            </tr>
-        </table>
-    </div>
-@endsection
+        <div>
+        </div> 
+        
+    </x-panel>
+    
+    <div class="max-w-7xl mx-auto p-8">
+        <x-splade-table :for="$reservations" >
+        </x-splade-table>
+      </div>
+
+</x-layout>
+
+

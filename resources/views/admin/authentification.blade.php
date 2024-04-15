@@ -24,7 +24,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-sm-8 col-xs-12 mx-auto">
-      <form class="login-form" method="POST" action="{{ route('login') }}">
+      <form class="login-form" method="POST" action="{{ route('login.admin') }}">
         @csrf
         <h2 class="text-center mb-4">Login</h2>
         @error('login')

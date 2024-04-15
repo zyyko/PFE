@@ -44,7 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'reservateurs',
         ],
-
+        'administrators' => [
+            'driver' => 'session',
+            'provider' => 'administrators',
+        ],
     ],
 
     /*
@@ -67,14 +70,17 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'database',
-            'table' => 'administrators',
+            'table' => 'administrators', // Assuming your administrators data is stored in 'administrators' table
         ],
-        'reservateurs' => [ // Define a provider for the 'reservateur' type
+        'reservateurs' => [
             'driver' => 'database',
             'table' => 'reservateur',
         ],
+        'administrators' => [
+            'driver' => 'database',
+            'table' => 'administrators', // Adjust table name if it's different
+        ],
     ],
-
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords

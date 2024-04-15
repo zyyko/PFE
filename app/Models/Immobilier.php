@@ -19,5 +19,6 @@ class Immobilier extends Model
     ];
 
     public $timestamps = false;
+    public $primaryKey = "ID_IMMOBILIER";
 
 }

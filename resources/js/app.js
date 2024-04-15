@@ -1,7 +1,7 @@
 import "./bootstrap";
 import "../css/app.css";
 import "@protonemedia/laravel-splade/dist/style.css";
-
+import './testing'
 import { createApp } from "vue/dist/vue.esm-bundler.js";
 import { renderSpladeApp, SpladePlugin } from "@protonemedia/laravel-splade";
 
@@ -16,3 +16,4 @@ createApp({
         "progress_bar": true
     })
     .mount(el);
+

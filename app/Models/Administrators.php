@@ -13,6 +13,6 @@ class Administrators extends Model
         "EMAIL",
         "MOT_DE_PASS",
     ];
-    public $primaryKey = "ID_ADMIN";
+    public $primaryKey = "id";
     public $timestamps = false;
 }
