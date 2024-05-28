@@ -10,6 +10,8 @@
 
 <body>
 
+    @yield('navbar')
+
     <main>
         @yield('section')
     </main>

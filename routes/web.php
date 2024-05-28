@@ -1,17 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\HomeController;
-use \App\Http\Controllers\AuthController;
-use \App\Http\Controllers\ProfileController;
-use \App\Http\Controllers\AuthControllerUtilisateur;
-use \App\Http\Controllers\SignUpController;
-use \App\Http\Controllers\UserHomeController;
-use \App\Http\Controllers\InsertController;
 use App\Http\Middleware;
 use ProtoneMedia\Splade\SpladeCore;
+use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\AuthController;
+use \App\Http\Controllers\HomeController;
 use \App\Http\Controllers\ChartController;
+use \App\Http\Controllers\InsertController;
+use \App\Http\Controllers\SignUpController;
 use App\Http\Controllers\AnnonceController;
+use \App\Http\Controllers\ProfileController;
+use \App\Http\Controllers\UserHomeController;
+use App\Http\Controllers\AdvertisementsController;
+use \App\Http\Controllers\AuthControllerUtilisateur;
 use App\Http\Controllers\ImmobiliersNonAcceptéController;
 
 
@@ -80,13 +81,15 @@ Route::middleware(['splade','check.admin'])->group(function () {
 
 
     
-    Route::get('/login',[AuthControllerUtilisateur::class, 'show'])->name("loginuser.show");
-    Route::post('/login',[AuthControllerUtilisateur::class, 'login'])->name("login");  
+Route::get('/login',[AuthControllerUtilisateur::class, 'show'])->name("loginuser.show");
+Route::post('/login',[AuthControllerUtilisateur::class, 'login'])->name("login");  
 
-    Route::get('/register', [SignUpController::class, 'show'])->name('register');
-    Route::post('/store', [SignUpController::class,'store'])->name('store');
+Route::get('/register', [SignUpController::class, 'show'])->name('register');
+Route::post('/store', [SignUpController::class,'store'])->name('store');
 
-    Route::get('/home', [UserHomeController::class, 'index'])->name('userhome');
+Route::get('/home', [UserHomeController::class, 'index'])->name('userhome');
+
+Route::get('/advertisements', [AdvertisementsController::class, 'index']);
 
 
 
@@ -99,8 +102,6 @@ Route::post('/admin/login',[AuthController::class, 'login'])->name("login.admin"
 //----------------------------------------------------------------------------;
 
 Route::resource('Publier', AnnonceController::class);
-
-
 
 
 

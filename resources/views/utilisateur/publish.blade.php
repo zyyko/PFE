@@ -29,7 +29,9 @@
         input[type="checkbox"],
         textarea,
         input[type="file"],
-        input[type="submit"] {
+        input[type="submit"],
+        input[type="text"],
+        input[type="number"] {
             margin-bottom: 20px;
             width: 100%;
             padding: 15px;
@@ -70,6 +72,8 @@
 
     <form action="{{ route('Publier.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
+        <span>Title</span><br>
+        <input type="text" id="title" name="title">
         <label for="region">Region</label>
         <select id="region" name="region">
             <option value="Agadir">Agadir</option>
@@ -130,6 +134,8 @@
             <option value="Asilah">Asilah</option>
             <option value="Msida">Msida</option>
         </select>
+        <span>Prix</span><br>
+        <input type="number" id="price" name="price">
 
         <label>Type:</label><br>
         <input type="radio" id="appartement" name="type" value="Appartement">

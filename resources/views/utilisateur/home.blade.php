@@ -316,8 +316,15 @@
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="course-item bg-light">
                                 <div class="position-relative overflow-hidden">
-                                    <img class="img-fluid" src="{{ $city->photos[0]['urls']['full'] }}"
-                                        alt="{{ $city->ville }}" style="width: 100%; height:300px; object-fit: cover">
+                                    @if (count($city->photos) > 0)
+                                        <img class="img-fluid" src="{{ $city->photos[0]['urls']['full'] }}"
+                                            alt="{{ $city->ville }}"
+                                            style="width: 100%; height:300px; object-fit: cover">
+                                    @else
+                                        <img class="img-fluid" src="{{ asset('default-image.jpg') }}"
+                                            alt="{{ $city->ville }}"
+                                            style="width: 100%; height:300px; object-fit: cover">
+                                    @endif
                                     <div
                                         class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                                         <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end"
@@ -393,11 +400,12 @@
             <div class="container">
                 <div class="text-center">
                     <h6 class="section-title bg-white text-center text-primary px-3">Testimonial</h6>
-                    <h1 class="mb-5">Our Students Say!</h1>
+                    <h1 class="mb-5">Our Users Say!</h1>
                 </div>
                 <div class="owl-carousel testimonial-carousel position-relative">
                     <div class="testimonial-item text-center">
-                        <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-1.jpg"
+                        <img class="border rounded-circle p-2 mx-auto mb-3"
+                            src="{{ asset('/home-resourcess/img/testimonial-1.jpg') }}"
                             style="width: 80px; height: 80px;">
                         <h5 class="mb-0">Client Name</h5>
                         <p>Profession</p>
@@ -407,7 +415,8 @@
                         </div>
                     </div>
                     <div class="testimonial-item text-center">
-                        <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-2.jpg"
+                        <img class="border rounded-circle p-2 mx-auto mb-3"
+                            src="{{ asset('/home-resourcess/img/testimonial-3.jpg') }}"
                             style="width: 80px; height: 80px;">
                         <h5 class="mb-0">Client Name</h5>
                         <p>Profession</p>
@@ -417,7 +426,8 @@
                         </div>
                     </div>
                     <div class="testimonial-item text-center">
-                        <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-3.jpg"
+                        <img class="border rounded-circle p-2 mx-auto mb-3"
+                            src="{{ asset('/home-resourcess/img/testimonial-2.jpg') }}"
                             style="width: 80px; height: 80px;">
                         <h5 class="mb-0">Client Name</h5>
                         <p>Profession</p>
@@ -427,7 +437,8 @@
                         </div>
                     </div>
                     <div class="testimonial-item text-center">
-                        <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-4.jpg"
+                        <img class="border rounded-circle p-2 mx-auto mb-3"
+                            src="{{ asset('/home-resourcess/img/testimonial-1.jpg') }}"
                             style="width: 80px; height: 80px;">
                         <h5 class="mb-0">Client Name</h5>
                         <p>Profession</p>

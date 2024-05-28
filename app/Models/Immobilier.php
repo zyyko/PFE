@@ -10,6 +10,8 @@ class Immobilier extends Model
     use HasFactory;
     protected $fillable = [
         "TYPE",
+        'price',
+        'title',
         "ville",
         "Description",
         "image",

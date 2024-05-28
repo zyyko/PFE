@@ -33,15 +33,21 @@ class AnnonceController extends Controller
     public function store(Request $request)
     {
 
+        //dd($request->all());
         // Validate the uploaded files
         $request->validate([
             'region' => 'required', // Region is required
             'type' => 'required', // Type is required
+            'title' => 'required',
+            'price' => 'required',
             'surface' => 'required', // Surface is required
             'description' => 'required', // Description is required
-            'primary_image' => 'required|image|mimes:jpeg,png,jpg,gif', // Primary image is required and must be an image
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|required', // Images are required and must be images
+            'primary_image' => 'required|image', // Primary image is required and must be an image
+            'images.*' => 'required|image', // Images must be images of type jpeg, png, or jpg
         ]);
+        
+
+        
 
         $climatisation = $request->has('climatisation') ? 1 : 0;
         $garage = $request->has('garage') ? 1 : 0;
@@ -63,6 +69,8 @@ class AnnonceController extends Controller
         
             // Save file information to the database, associating it with the immobilier record
             $id = Immobilier::insertGetId([
+                "title" => $request->title,
+                "price" => $request->price,
                 "TYPE" => $request->type,
                 'ville' => $request->region,
                 "Description" => $request->description,
